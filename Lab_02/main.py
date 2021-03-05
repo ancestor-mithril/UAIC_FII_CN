@@ -1,10 +1,12 @@
 from functions import get_matrix_mul, get_matrix_determinant, get_matrix_inverse
 from lib import bonus, cholesky_decomposition, determ_A, system_solve
-from test import CholeskyDecomposition as cd, read_from_file
+from test import CholeskyDecomposition as cd, read_from_file, random_init
 import scipy
 import numpy as np
 
-A, b = read_from_file()
+A, b = random_init(10)  # [[2, 2, 2], [2, 5, 2], [2, 2, 7]]
+# A, b = read_from_file()  # [[2, 2, 2], [2, 5, 2], [2, 2, 7]]
+print(A)
 L = cholesky_decomposition(A)
 print('\n', "ex_1")
 print(L)
@@ -45,3 +47,4 @@ inv = get_matrix_inverse(A)
 inv2 = np.linalg.inv(A)
 print("norm", np.linalg.norm(np.subtract(inv, inv2)))
 
+bonus(A, b)

@@ -75,12 +75,9 @@ class CholeskyDecomposition(unittest.TestCase):
         np.testing.assert_array_almost_equal(inv, inv2)
 
 
-
-
 def read_from_file():
-    CholeskyDecomposition.A = A = eval(open("A.txt", "r").read())
-    CholeskyDecomposition.m1 = CholeskyDecomposition.A
-    CholeskyDecomposition.b = b = eval(open("b.txt", "r").read())
+    A = eval(open("A.txt", "r").read())
+    b = eval(open("b.txt", "r").read())
     return A, b
 
 
@@ -108,9 +105,27 @@ def read_from_stdin():
 
 
 def random_init(n):
-    CholeskyDecomposition.A = [[random.randint(-10, 10) for _ in range(n)] for _ in range(n)]
-    CholeskyDecomposition.m1 = CholeskyDecomposition.A
-    CholeskyDecomposition.b = [random.randint(-10, 10) for _ in range(n)]
+    def matrix_to_vector(i, j, n):
+        if i <= j:
+            return int(i * n - (i - 1) * i / 2 + j - i)
+        return int(j * n - (j - 1) * j / 2 + i - j)
+
+    while True:
+        v = [random.randint(-40, 40) for i in range(n * (n + 1 // 2))]
+        A = [[v[matrix_to_vector(i, j, n) if j >= i else 0] for i in range(n)] for j in range(n)]
+        for i in range(n):
+            for j in range(i):
+                A[i][j] = A[j][i]
+        b = [random.randint(-10, 10) for _ in range(n)]
+        try:
+            lib.cholesky_decomposition(A)
+            return A, b
+        except Exception as e:
+            print(e)
+            pass
+
+
+
 
 
 if __name__ == "__main__":
