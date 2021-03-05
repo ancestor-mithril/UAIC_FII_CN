@@ -18,9 +18,7 @@ class CholeskyDecomposition(unittest.TestCase):
     x = [0, 1, 2]
 
     def test_1_decomp(self):
-        read_from_file()
-        # read_from_stdin()
-        # random_init(3)
+
         cd = CholeskyDecomposition
 
         A = np.array(cd.m1)
@@ -76,13 +74,14 @@ class CholeskyDecomposition(unittest.TestCase):
         inv2 = np.linalg.inv(cd.A)
         np.testing.assert_array_almost_equal(inv, inv2)
 
-        print("norm", np.linalg.norm(np.subtract(inv, inv2)))
+
 
 
 def read_from_file():
-    CholeskyDecomposition.A = eval(open("A.txt", "r").read())
+    CholeskyDecomposition.A = A = eval(open("A.txt", "r").read())
     CholeskyDecomposition.m1 = CholeskyDecomposition.A
-    CholeskyDecomposition.b = eval(open("b.txt", "r").read())
+    CholeskyDecomposition.b = b = eval(open("b.txt", "r").read())
+    return A, b
 
 
 def read_from_stdin():
