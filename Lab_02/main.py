@@ -4,8 +4,8 @@ from test import CholeskyDecomposition as cd, read_from_file, random_init
 import scipy
 import numpy as np
 
-A, b = random_init(10)  # [[2, 2, 2], [2, 5, 2], [2, 2, 7]]
-# A, b = read_from_file()  # [[2, 2, 2], [2, 5, 2], [2, 2, 7]]
+# A, b = random_init(3)  # [[2, 2, 2], [2, 5, 2], [2, 2, 7]]
+A, b = read_from_file()  # [[2.25, 3, 3],[3, 9.0625, 13],[3, 13, 24]]
 print(A)
 L = cholesky_decomposition(A)
 print('\n', "ex_1")
@@ -46,5 +46,6 @@ if get_matrix_determinant(A) == 0:
 inv = get_matrix_inverse(A)
 inv2 = np.linalg.inv(A)
 print("norm", np.linalg.norm(np.subtract(inv, inv2)))
-
+# print(inv)
+print("\nBONUS\n")
 bonus(A, b)

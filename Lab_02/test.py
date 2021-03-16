@@ -111,7 +111,7 @@ def random_init(n):
         return int(j * n - (j - 1) * j / 2 + i - j)
 
     while True:
-        v = [random.randint(-40, 40) for i in range(n * (n + 1 // 2))]
+        v = [random.randint(-1000, 1000) for i in range(n * (n + 1 // 2))]
         A = [[v[matrix_to_vector(i, j, n) if j >= i else 0] for i in range(n)] for j in range(n)]
         for i in range(n):
             for j in range(i):

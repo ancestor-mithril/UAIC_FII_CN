@@ -15,13 +15,13 @@ def cholesky_decomposition(a):
                 for k in range(j):
                     value -= l_matrix[j][k] ** 2
                 if value < 0:
-                    raise Exception("Matrix is not positive")
+                    raise Exception("Matrix is not positive 1")
                 l_matrix[i][j] = np.sqrt(value)  # int(np.sqrt(value))
             else:
                 for k in range(j):
                     value -= l_matrix[i][k] * l_matrix[j][k]
                 if value == 0:
-                    raise Exception("Matrix is not positive")
+                    raise Exception("Matrix is not positive 2")
                 value /= l_matrix[j][j]
                 l_matrix[i][j] = value  # int(value)
     return l_matrix
