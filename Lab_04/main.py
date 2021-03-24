@@ -49,7 +49,7 @@ def gauss_seidel(mat, f, x):
         i1 = i - q if i - q > 0 else -1
         i2 = i
         i3 = i + p if i + p < n else -1
-        x[i2] = (f[i] - c[i1] * x[i1] - b[i3] * x[i3]) / a[i2]
+        x[i2] = (f[i] - c[i1] * x[i1] - b[-1 if i3 == -1 else i3 - p] * x[i3]) / a[i2]
         if x[i2] > 10**3:
             x[i2] = 10**3
     x.pop()
