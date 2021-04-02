@@ -98,5 +98,5 @@ if __name__ == '__main__':
     f_s = [read_arr("f" + str(i+1) + ".txt") for i in range(5)]
     for ex in range(5):
         x, res = solve_pr(a_s[ex], f_s[ex])
-        y = tridiag_x_vector(a_s[ex], x)
-        print(norm_inform(y, f_s[ex]))
+        # y = tridiag_x_vector(a_s[ex], x)
+        # print(norm_inform(y, f_s[ex]))
